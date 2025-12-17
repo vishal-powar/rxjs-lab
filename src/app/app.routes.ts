@@ -13,5 +13,9 @@ export const routes: Routes = [
     {
         path: 'multiple-api-calls',
         loadComponent: () => import('./components/multiple-api-calls/multiple-api-calls').then(m => m.MultipleApiCalls)
+    },
+    {
+        path: 'dependent-api-calls',
+        loadComponent: () => import('./components/dependent-api-calls/dependent-api-calls').then(m => m.DependentApiCalls)
     }
 ];
