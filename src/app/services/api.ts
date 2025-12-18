@@ -3,21 +3,39 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = 'https://jsonplaceholder.typicode.com';
+	private baseUrl = 'https://jsonplaceholder.typicode.com';
 
-  constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) { }
 
-  getUsers() {
-    return this.http.get<any[]>(`${this.baseUrl}/users`);
-  }
+	getUsers() {
+		return this.http.get<any[]>(`${this.baseUrl}/users`);
+	}
 
-  getPosts() {
-    return this.http.get<any[]>(`${this.baseUrl}/posts`);
-  }
+	getPosts() {
+		return this.http.get<any[]>(`${this.baseUrl}/posts`);
+	}
 
-  getUserPosts(userId: number) {
-    return this.http.get<any[]>(
-      `${this.baseUrl}/posts?userId=${userId}`
-    );
-  }
+	getUser(userId: number) {
+		return this.http.get<any>(
+			`${this.baseUrl}/users/${userId}`
+		);
+	}
+
+	getUserPosts(userId: number) {
+		return this.http.get<any[]>(
+			`${this.baseUrl}/posts?userId=${userId}`
+		);
+	}
+
+	getOrdersByUser(userId: number) {
+		return this.http.get<any[]>(
+			`${this.baseUrl}/posts?userId=${userId}`
+		);
+	}
+
+	getOrderDetails(orderId: number) {
+		return this.http.get<any>(
+			`${this.baseUrl}/posts/${orderId}`
+		);
+	}
 }
